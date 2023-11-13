@@ -1,0 +1,91 @@
+
+get http://localhost:5050/
+
+###
+get http://localhost:5050/api/movies
+
+###
+get http://localhost:5050/api/weather
+
+//alternative way
+###
+@hostname = localhost
+@port = 5050
+@host = http://{{hostname}}:{{port}}
+
+get {{host}}
+###
+
+//------------------Movie part---------------------------
+//-------get methods for movies--------------
+GET {{host}}/api/movies
+###
+GET {{host}}/api/movies/3
+###
+GET {{host}}/api/movies?name=Inception
+###
+
+//-------POST method for movies--------------
+POST {{host}}/api/movies
+content-type: application/json
+
+{ 
+    "name": "Titanic", 
+    "director": "James Cameron", 
+    "release_year": 1997, 
+    "rating": 9.0 
+}
+###
+//-------PUT method for movies--------------
+PUT {{host}}/api/movies
+content-type: application/json
+
+{
+    "id": 5,
+    "name": "Jurassic park",
+    "director": "James Cameron", 
+    "release_year": 2000, 
+    "rating": 9.5
+}
+###
+//-------DELETE method for movies--------------
+DELETE {{host}}/api/movies/5
+###
+
+//--------------END Movie part---------------------
+
+
+//--------------Weather Part-----------------------
+// GET request for weather
+GET {{host}}/api/weather
+###
+GET {{host}}/api/weather/1
+###
+GET {{host}}/api/weather?name=Inception
+###
+
+// POST request for weather
+POST {{host}}/api/weather
+content-type: application/json
+
+{ 
+    "description": "rainy",
+    "image": "☔"
+}
+###
+
+// PUT request for weather 
+PUT {{host}}/api/weather
+content-type: application/json
+
+{ 
+    "id": 78,
+    "description": "snowy",
+    "image": "🌨️"
+}
+###
+
+// DELETE request for weather
+DELETE {{host}}/api/weather/78
+
+//--------------Weather Part END-------------------

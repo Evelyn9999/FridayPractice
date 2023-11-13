@@ -1,0 +1,16 @@
+
+services:
+  frontend:
+    image: ${FRONTEND_IMAGE}
+    ports:
+      - "80:3000"
+    env_file:
+      - .env
+    restart: always
+  backend:
+    image: ${BACKEND_IMAGE}
+    ports:
+      - "5050:5050"
+    env_file:
+      - .env
+    restart: always
